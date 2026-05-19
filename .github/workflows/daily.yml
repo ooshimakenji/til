@@ -1,0 +1,30 @@
+name: Daily Log
+
+on:
+  schedule:
+    - cron: '0 13 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  daily-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update log
+        run: |
+          DATE=$(date '+%Y-%m-%d')
+          WEEK=$(date '+%Y-W%V')
+          mkdir -p logs
+          echo "- $DATE" >> logs/$WEEK.md
+
+      - name: Commit
+        run: |
+          git config user.name "ooshimakenji"
+          git config user.email "omagada@gmail.com"
+          git add logs/
+          git diff --cached --quiet || git commit -m "log: $(date '+%Y-%m-%d')"
+          git push
