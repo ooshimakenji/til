@@ -1,10 +1,10 @@
 # TIL — Today I Learned
 
-Notas e aprendizados do dia a dia.
+Notas e descobertas do dia a dia, registradas como referência pessoal.
 
 ## Logs
 
-Ver pasta `logs/`.
+Consulte a pasta `logs/`.
 
 ## Contribuindo / Contributing
 
